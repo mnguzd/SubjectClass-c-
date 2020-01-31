@@ -1,0 +1,11 @@
+C:\Users\roman\Desktop\Coding\Projects C#\LabaN7\bin\Release\netcoreapp3.1\LabaN7.exe
+C:\Users\roman\Desktop\Coding\Projects C#\LabaN7\bin\Release\netcoreapp3.1\LabaN7.deps.json
+C:\Users\roman\Desktop\Coding\Projects C#\LabaN7\bin\Release\netcoreapp3.1\LabaN7.runtimeconfig.json
+C:\Users\roman\Desktop\Coding\Projects C#\LabaN7\bin\Release\netcoreapp3.1\LabaN7.runtimeconfig.dev.json
+C:\Users\roman\Desktop\Coding\Projects C#\LabaN7\bin\Release\netcoreapp3.1\LabaN7.dll
+C:\Users\roman\Desktop\Coding\Projects C#\LabaN7\bin\Release\netcoreapp3.1\LabaN7.pdb
+C:\Users\roman\Desktop\Coding\Projects C#\LabaN7\obj\Release\netcoreapp3.1\LabaN7.AssemblyInfoInputs.cache
+C:\Users\roman\Desktop\Coding\Projects C#\LabaN7\obj\Release\netcoreapp3.1\LabaN7.AssemblyInfo.cs
+C:\Users\roman\Desktop\Coding\Projects C#\LabaN7\obj\Release\netcoreapp3.1\LabaN7.dll
+C:\Users\roman\Desktop\Coding\Projects C#\LabaN7\obj\Release\netcoreapp3.1\LabaN7.pdb
+C:\Users\roman\Desktop\Coding\Projects C#\LabaN7\obj\Release\netcoreapp3.1\LabaN7.csprojAssemblyReference.cache
