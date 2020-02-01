@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LabaN7
 {
-      class StructWork: InterfaceSubjectWork
+      class StructWork: Realization
     {
         public void Create(string path)  //Создание и заполнение класса
         {
@@ -38,6 +38,10 @@ namespace LabaN7
         public void SortByName()  //Сортировка по имени в алфавитном порядке
         {
             Sort_By_Name();
+        }
+        public void Menu()
+        {
+            Menu_();
         }
         
 
