@@ -35,9 +35,9 @@ namespace LabaN7
         {
             Search_By_Hours(hours);
         }
-        public void SortByName()  //Сортировка по имени в алфавитном порядке
+        public void SortByName(bool x)  //Сортировка по имени в алфавитном порядке
         {
-            Sort_By_Name();
+            Sort_By_Name(x);
         }
         public void Menu()
         {
