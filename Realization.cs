@@ -24,6 +24,7 @@ namespace LabaN7
                     Console.WriteLine("\tКол-во часов: " + subjects[i].Hours);
                     Console.WriteLine("--------------------------------");
                 }
+                GC.Collect();
             }
             else
             {
@@ -317,27 +318,32 @@ namespace LabaN7
         {
             if (File.Exists(path))
             {
-                using (StreamReader str = new StreamReader(path))   //Поток для чтения файла
+                var list = new List<string>();       //Список строк файла  
+                StreamReader str = new StreamReader(path);
+                while (!str.EndOfStream)
+                    list.Add(str.ReadLine());
+                str.Dispose();                 //Освобождается память
+                text = list.ToArray();           //Из списка делается массив строк 
+                list.Clear();   //Важный недочет
+                if (text.Length > 0 && text.Length % 5 == 0)
                 {
-                    var list = new List<string>(); //Список строк файла
-                    while (!str.EndOfStream)
-                        list.Add(str.ReadLine());
-                    text = list.ToArray(); //Из списка делается массив строк
-                    if (text.Length > 0 && text.Length % 5 == 0)
+                    subjects = new Subject[text.Length / 5];
+                    created = true;
+                    for (int i = 0; i < subjects.Length; i++)
                     {
-                        subjects = new Subject[text.Length / 5];
-                        created = true;
-                        for (int i = 0; i < subjects.Length; i++)
-                            Fill(subjects, text, i);  // Вызов метода Fill() заполнения объекта данными
+                        Fill(subjects, text, i);// Вызов метода Fill() заполнения объекта данными
                     }
-                    else
-                    {
-                        Console.WriteLine($"Ошибка. Файл должен содержать как минимум 5" +
-                            " строк для каждого из полей структуры,а в вашем файле " + text.Length + " строк(и).");
-                        list.Clear();
-                        text = null;
-                    }
+                    text = null;    //Важный недочет
+                      
                 }
+                else
+                {
+                    Console.WriteLine($"Ошибка. Файл должен содержать как минимум 5" +
+                        " строк для каждого из полей структуры,а в вашем файле " + text.Length + " строк(и).");
+                    list.Clear();
+                    text = null;
+                }
+                GC.Collect();      //Сборка мусора
             }
             else
             {
@@ -371,6 +377,8 @@ namespace LabaN7
             {
                 Console.WriteLine("Строка " + (index * 5 + 4) + " должна иметь вид числа." + " Error: " + ex.Message); //Ошибка конвертации
             }
+            
+            
         }
         private void EditMenu(uint index){
             Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -512,7 +520,7 @@ namespace LabaN7
             Console.ResetColor();
             try
             {
-                byte selecsubject = Convert.ToByte(Console.ReadLine());
+                uint selecsubject = Convert.ToUInt32(Console.ReadLine());
                 Console.Clear();
                 EditMenu(selecsubject);
             }
@@ -574,7 +582,7 @@ namespace LabaN7
                             Console.ResetColor();
                             try
                             {
-                                byte x = Convert.ToByte(Console.ReadLine());
+                                uint x = Convert.ToUInt32(Console.ReadLine());
                                 if (x >= 0 && x < subjects.Length)
                                 {
                                     Console.Clear();
@@ -591,7 +599,7 @@ namespace LabaN7
                                 }
 
                             }
-                            catch (Exception ex)
+                            catch
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -688,7 +696,7 @@ namespace LabaN7
                                 Search_By_Year(Convert.ToUInt16(name));
                                 Menu_();
                             }
-                            catch (Exception ex)
+                            catch
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -1370,10 +1378,22 @@ namespace LabaN7
                             Menu_();
                         }
                         break;
+               
 
 
+                        
+                    }
+                case 10:
+                    {
+                        for (int i = 0; i < subjects.Length; i++)
+                        {
+                            subjects[i].Department = null;
+                            subjects[i].Faculty = null;
+                            subjects[i].Name = null;
+                            subjects[i] = null;
+                        }
 
-                        break;
+                        created = false; GC.Collect(); Menu_(); break;
                     }
                 default:
                     {
@@ -1384,13 +1404,6 @@ namespace LabaN7
                         Menu_();
                         break;
                     }
-
-
-
-
-
-
-
             }
         }
 
