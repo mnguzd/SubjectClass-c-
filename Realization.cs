@@ -10,6 +10,7 @@ namespace LabaN7
 
         private Subject[] subjects = null;
         private string[] text = null;
+
         private protected void Show_Subject()   //Вывод всего массива
         {
             if (created)
@@ -379,6 +380,83 @@ namespace LabaN7
             }
             
             
+        }
+        private void AddFirst(string name, ushort year, string faculty, string department, ushort hours)
+        {
+            var sb=new Subject[subjects.Length+1];
+            for(int i=0; i < subjects.Length; i++)
+            {
+                sb[i] = new Subject();
+            }
+            sb[0].Name = name;
+            sb[0].Department = department;
+            sb[0].Faculty = faculty;
+            sb[0].Hours = hours;
+            sb[0].Year = year;
+            subjects.CopyTo(sb, 1);
+            subjects = null;
+            GC.Collect();
+            subjects = new Subject[sb.Length];
+            for(int i = 0; i < sb.Length; i++)
+            {
+                subjects[i] = sb[i];
+            }
+            sb = null;
+            GC.Collect();
+        }
+        private void AddLast(string name, ushort year, string faculty, string department, ushort hours)
+        {
+            var sb = new Subject[subjects.Length + 1];
+            for (int i = 0; i < subjects.Length; i++)
+            {
+                sb[i] = new Subject();
+                sb[i] = subjects[i];
+            }
+            sb[subjects.Length] = new Subject();
+            sb[subjects.Length].Name = name;
+            sb[subjects.Length].Department = department;
+            sb[subjects.Length].Faculty = faculty;
+            sb[subjects.Length].Hours = hours;
+            sb[subjects.Length].Year = year;
+            subjects = null;
+            GC.Collect();
+            subjects = new Subject[sb.Length];
+            for (int i = 0; i < sb.Length; i++)
+            {
+                subjects[i] = sb[i];
+            }
+            sb = null;
+            GC.Collect();
+        }
+        private void AddIndex(uint index, string name, ushort year, string faculty, string department, ushort hours)
+        {
+            var sb = new Subject[subjects.Length + 1];
+            for (int i = 0; i < index; i++)
+            {
+                sb[i] = new Subject();
+                sb[i] = subjects[i];
+            }
+            for (uint i = index; i < sb.Length-1; i++)
+            {
+                sb[i+1] = new Subject();
+                sb[i + 1] = subjects[i];
+            }
+            sb[index] = new Subject();
+            sb[index].Name = name;
+            sb[index].Department = department;
+            sb[index].Faculty = faculty;
+            sb[index].Hours = hours;
+            sb[index].Year = year;
+            subjects = null;
+            GC.Collect();
+            subjects = new Subject[sb.Length];
+            for (int i = 0; i < sb.Length; i++)
+            {
+                subjects[i] = sb[i];
+            }
+            sb = null;
+            GC.Collect();
+
         }
         private void EditMenu(uint index){
             Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -1228,6 +1306,271 @@ namespace LabaN7
             }
 
         }
+        private void Menu_Add()
+        {
+            string name;
+            ushort year=0;
+            string department;
+            string faculty;
+            ushort hours=0;
+            uint index=0;
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("\tДобавление элемента\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("  1.");
+            Console.ResetColor();
+            Console.Write("В начало\t\t");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("2.");
+            Console.ResetColor();
+            Console.WriteLine("В конец\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("  3.");
+            Console.ResetColor();
+            Console.Write("В любое место\t");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("4.");
+            Console.ResetColor();
+            Console.WriteLine("Обратно в меню.\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("Действие: ");
+            Console.ResetColor();
+            try
+            {
+                char select = Convert.ToChar(Console.ReadLine());
+                switch (select)
+                {
+                    case '1':
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("\nВведите имя : ");
+                            Console.ResetColor();
+                            name = Console.ReadLine();
+                            Console.Clear();
+                            try
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write("\nВведите год : ");
+                                Console.ResetColor();
+                                year = Convert.ToUInt16(Console.ReadLine());
+                                Console.Clear();
+                            }
+                            catch
+                            {
+
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine("\nГод ввёден в неправильном формате.");
+                                Console.ResetColor();
+                                Menu_Add();
+                            }
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("\nВведите факультет: ");
+                            Console.ResetColor();
+                            faculty = Console.ReadLine();
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("\nВведите кафедру : ");
+                            Console.ResetColor();
+                            department = Console.ReadLine();
+                            Console.Clear();
+                            try
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write("\nВведите часы : ");
+                                Console.ResetColor();
+                                hours = Convert.ToUInt16(Console.ReadLine());
+                                Console.Clear();
+
+                            }
+                            catch
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine("\nЧасы введены в неправильном формате.");
+                                Console.ResetColor();
+                                Menu_Add();
+                            }
+                            AddFirst(name, year, faculty, department, hours);
+                            Console.Clear();
+                            Menu_Add();
+                            break;
+                        }
+                    case '2':
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("\nВведите имя : ");
+                            Console.ResetColor();
+                            name = Console.ReadLine();
+                            Console.Clear();
+                            try
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write("\nВведите год : ");
+                                Console.ResetColor();
+                                year = Convert.ToUInt16(Console.ReadLine());
+                                Console.Clear();
+                            }
+                            catch
+                            {
+
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine("\nГод ввёден в неправильном формате.");
+                                Console.ResetColor();
+                                Menu_Add();
+                            }
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("\nВведите факультет: ");
+                            Console.ResetColor();
+                            faculty = Console.ReadLine();
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("\nВведите кафедру : ");
+                            Console.ResetColor();
+                            department = Console.ReadLine();
+                            Console.Clear();
+                            try
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write("\nВведите часы : ");
+                                Console.ResetColor();
+                                hours = Convert.ToUInt16(Console.ReadLine());
+                                Console.Clear();
+
+                            }
+                            catch
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine("\nЧасы введены в неправильном формате.");
+                                Console.ResetColor();
+                                Menu_Add();
+                            }
+                            AddLast(name, year, faculty, department, hours);
+                            Console.Clear();
+                            Menu_Add();
+                            break;
+                        }
+                    case '3':
+                        {
+                            try
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write("\nВведите новый номер предмета (0 - начало, "+subjects.Length+" - конец): ");
+                                Console.ResetColor();
+                                index = Convert.ToUInt32(Console.ReadLine());
+                                if (!(index >= 0 && index <= subjects.Length))
+                                {
+                                    Console.Clear();
+                                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                                    Console.WriteLine("\nНельзя выходить за рамки массива.");
+                                    Console.ResetColor();
+                                    Menu_Add();
+                                }
+                            }
+                            catch
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine("\nНомер ввёден в неправильном формате.");
+                                Console.ResetColor();
+                                Menu_Add();
+                            }
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("\nВведите имя : ");
+                            Console.ResetColor();
+                            name = Console.ReadLine();
+                            Console.Clear();
+                            try
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write("\nВведите год : ");
+                                Console.ResetColor();
+                                year = Convert.ToUInt16(Console.ReadLine());
+                                Console.Clear();
+                            }
+                            catch
+                            {
+
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine("\nГод ввёден в неправильном формате.");
+                                Console.ResetColor();
+                                Menu_Add();
+                            }
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("\nВведите факультет: ");
+                            Console.ResetColor();
+                            faculty = Console.ReadLine();
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("\nВведите кафедру : ");
+                            Console.ResetColor();
+                            department = Console.ReadLine();
+                            Console.Clear();
+                            try
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write("\nВведите часы : ");
+                                Console.ResetColor();
+                                hours = Convert.ToUInt16(Console.ReadLine());
+                                Console.Clear();
+
+                            }
+                            catch
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine("\nЧасы введены в неправильном формате.");
+                                Console.ResetColor();
+                                Menu_Add();
+                            }
+                            AddIndex(index,name, year, faculty, department, hours);
+                            Console.Clear();
+                            Menu_Add();
+                            break;
+                        }
+                    case '4':
+                        {
+                            Console.Clear();
+                            Menu_();
+                            break;
+                        }
+                    default:
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("\nВведите пункт 1-4");
+                            Console.ResetColor();
+                            Menu_Add();
+                            break;
+                        }
+                }
+    }
+            catch(Exception ex)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("\nВведите пункт 1-4"+ex.Message);
+                Console.ResetColor();
+                Menu_Add();
+            }
+        }
         private protected void Menu_()         //Меню для взаимодействия.
         {
             byte select = new byte();
@@ -1363,7 +1706,8 @@ namespace LabaN7
                         }
                         break;
                     }
-                case 5: {
+                case 5:
+                    {
                         if (created)
                         {
                             Console.Clear();
@@ -1378,21 +1722,29 @@ namespace LabaN7
                             Menu_();
                         }
                         break;
-               
-
-
-                        
                     }
-                case 10:
+               case 6:
                     {
-                        for (int i = 0; i < subjects.Length; i++)
+                        if (created)
                         {
-                            subjects[i].Department = null;
-                            subjects[i].Faculty = null;
-                            subjects[i].Name = null;
-                            subjects[i] = null;
+                            Console.Clear();
+                            Menu_Add();
                         }
-
+                        else
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("\nМассив предметов не был создан\n");
+                            Console.ResetColor();
+                            Menu_();
+                        }
+                        break;
+                    }
+                             
+                case 9:
+                    {
+                        Console.Clear();
+                        subjects = null;
                         created = false; GC.Collect(); Menu_(); break;
                     }
                 default:
@@ -1406,9 +1758,5 @@ namespace LabaN7
                     }
             }
         }
-
-
-
-
     }
 }
