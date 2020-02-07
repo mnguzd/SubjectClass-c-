@@ -12,8 +12,5 @@ namespace LabaN7
         public string Faculty { get; set; }
         public string Department { get; set; }
         public ushort Hours { get; set; }
-       
-
-
     };
 }
