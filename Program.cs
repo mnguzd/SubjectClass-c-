@@ -1,38 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-
 namespace LabaN7
 {
-/*7  Структура ПРЕДМЕТ с полями: название, год, факультет, кафедра, количество часов. Done
-     1.	Динамическое выделение памяти для массива структур. Done
-     2.	Ввод элементов массива с клавиатуры. Done
-     3.	Поиск элемента массива.  Done
-     4.	Сортировка массива. Done
-     5.	Редактирование элемента массива.   
-     6.	Добавление нового элемента в конец.   
-     7.	Удаление указанного элемента из массива.   
-     8.	Вставка нового элемента.   
-     9.	Запись элементов массива в файл.   
-     10.Считывание элементов массива из файла. Done
-     11.Вывод элементов массива на экран. Done
-     12.Освобождение памяти, выделенной для массива.   
-     13.Окончание работы программы. 
-*/
-
     class Program
     {
-        
-        static void Main(string[] args)
+        static void Main()
         {
-            
-            string path = @"C:\Users\roman\Desktop\Coding\Projects C#\LabaN7\Data.txt";
-            StructWork str = new StructWork();
-            str.Create(path);
-            str.Show();
-            
-
-
+            Realization rl = new Realization();
+            rl.Menu_();
         }
     }
 }
