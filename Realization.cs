@@ -4,14 +4,13 @@ using System.IO;
 
 namespace LabaN7
 {
-    abstract class Realization
+    class Realization
     {
         private bool created = false;
-
         private Subject[] subjects = null;
         private string[] text = null;
-
-        private protected void Show_Subject()   //Вывод всего массива
+        private string path;
+        private void Show_Subject()   //Вывод всего массива
         {
             if (created)
             {
@@ -29,10 +28,10 @@ namespace LabaN7
             }
             else
             {
-                Console.WriteLine("Массив предметов не был создан, используйте метод .Create()");
+                Console.WriteLine(" Массив предметов не был создан, используйте метод .Create()");
             }
         }
-        private protected void Show_Subject(uint index)   //Перегрузка. Вывод предмета по индексу
+        private void Show_Subject(uint index)   //Перегрузка. Вывод предмета по индексу
         {
             if (created)
             {
@@ -46,11 +45,11 @@ namespace LabaN7
             }
             else
             {
-                Console.WriteLine("Массив предметов не был создан, используйте метод .Create()");
+                Console.WriteLine(" Массив предметов не был создан, используйте метод .Create()");
             }
 
         }
-        private protected void Sort_By_Name(bool x)
+        private void Sort_By_Name(bool x)
         {
             if (created)
             {
@@ -78,9 +77,9 @@ namespace LabaN7
                 }
             }
             else
-                Console.WriteLine("Массив предметов не был создан, используйте метод .Create()");
+                Console.WriteLine(" Массив предметов не был создан, используйте метод .Create()");
         }
-        private protected void Sort_By_Year(bool x)
+        private void Sort_By_Year(bool x)
         {
             if (created)
             {
@@ -108,9 +107,9 @@ namespace LabaN7
                 }
             }
             else
-                Console.WriteLine("Массив предметов не был создан, используйте метод .Create()");
+                Console.WriteLine(" Массив предметов не был создан, используйте метод .Create()");
         }
-        private protected void Sort_By_Faculty(bool x)
+        private void Sort_By_Faculty(bool x)
         {
             if (created)
             {
@@ -138,9 +137,9 @@ namespace LabaN7
                 }
             }
             else
-                Console.WriteLine("Массив предметов не был создан, используйте метод .Create()");
+                Console.WriteLine(" Массив предметов не был создан, используйте метод .Create()");
         }
-        private protected void Sort_By_Department(bool x)
+        private void Sort_By_Department(bool x)
         {
             if (created)
             {
@@ -168,9 +167,9 @@ namespace LabaN7
                 }
             }
             else
-                Console.WriteLine("Массив предметов не был создан, используйте метод .Create()");
+                Console.WriteLine(" Массив предметов не был создан, используйте метод .Create()");
         }
-        private protected void Sort_By_Hours(bool x)
+        private void Sort_By_Hours(bool x)
         {
             if (created)
             {
@@ -198,9 +197,9 @@ namespace LabaN7
                 }
             }
             else
-                Console.WriteLine("Массив предметов не был создан, используйте метод .Create()");
+                Console.WriteLine(" Массив предметов не был создан, используйте метод .Create()");
         }
-        private protected void Search_By_Hours(ushort hours)
+        private void Search_By_Hours(ushort hours)
         {
             if (created)
             {
@@ -210,6 +209,10 @@ namespace LabaN7
                     {
                         Show_Subject(i);
                         flag = true;
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.Write(" Успешно!");
+                        Console.ResetColor();
+                        break;
                     }
                 if (!flag)
                 {
@@ -222,7 +225,7 @@ namespace LabaN7
             else
                 Console.WriteLine("Массив предметов не был создан, используйте метод .Create()");
         }
-        private protected void Search_By_Department(string department)
+        private void Search_By_Department(string department)
         {
             if (created)
             {
@@ -232,6 +235,10 @@ namespace LabaN7
                     {
                         Show_Subject(i);
                         flag = true;
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.Write(" Успешно!");
+                        Console.ResetColor();
+                        break;
                     }
                 if (!flag)
                 {
@@ -245,7 +252,7 @@ namespace LabaN7
                 Console.WriteLine("Массив предметов не был создан, используйте метод .Create()");
             }
         }
-        private protected void Search_By_Faculty(string faculty)
+        private void Search_By_Faculty(string faculty)
         {
             if (created)
             {
@@ -255,6 +262,10 @@ namespace LabaN7
                     {
                         Show_Subject(i);
                         flag = true;
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.Write(" Успешно!");
+                        Console.ResetColor();
+                        break;
                     }
                 if (!flag)
                 {
@@ -268,7 +279,7 @@ namespace LabaN7
                 Console.WriteLine("Массив предметов не был создан, используйте метод .Create()");
             }
         }
-        private protected void Search_By_Year(ushort year)
+        private void Search_By_Year(ushort year)
         {
             if (created)
             {
@@ -278,6 +289,10 @@ namespace LabaN7
                     {
                         Show_Subject(i);
                         flag = true;
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.Write(" Успешно!");
+                        Console.ResetColor();
+                        break;
                     }
                 if (!flag)
                 {
@@ -292,7 +307,7 @@ namespace LabaN7
                 Console.WriteLine("Массив предметов не был создан, используйте метод .Create()");
             }
         }
-        private protected void Search_By_Name(string name)
+        private void Search_By_Name(string name)
         {
             if (created)
             {
@@ -302,11 +317,15 @@ namespace LabaN7
                     {
                         Show_Subject(i);
                         flag = true;
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.Write(" Успешно!");
+                        Console.ResetColor();
+                        break;
                     }
                 if (!flag)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("\n Не найдено");
+                    Console.Write(" Не найдено");
                     Console.ResetColor();
                 }
             }
@@ -315,7 +334,7 @@ namespace LabaN7
                 Console.WriteLine("Массив предметов не был создан, используйте метод .Create()");
             }
         }
-        private protected void CreateAndFill(string path)
+        private void CreateAndFill(string path)
         {
             if (File.Exists(path))
             {
@@ -339,7 +358,7 @@ namespace LabaN7
                 }
                 else
                 {
-                    Console.WriteLine($"Ошибка. Файл должен содержать как минимум 5" +
+                    Console.WriteLine($" Ошибка. Файл должен содержать как минимум 5" +
                         " строк для каждого из полей структуры,а в вашем файле " + text.Length + " строк(и).");
                     list.Clear();
                     text = null;
@@ -350,7 +369,7 @@ namespace LabaN7
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("\nВведён неверный формат или файла не существует.\n");
+                Console.WriteLine("\n Введён неверный формат или файла не существует.\n");
                 Console.ResetColor();
             }
         }
@@ -366,7 +385,7 @@ namespace LabaN7
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Строка " + (index * 5 + 1) + " должна иметь вид числа." + " Error: " + ex.Message); //Ошибка конвертации
+                Console.WriteLine(" Строка " + (index * 5 + 1) + " должна иметь вид числа." + " Error: " + ex.Message); //Ошибка конвертации
             }
             subject[index].Faculty = text[index * 5 + 2];
             subject[index].Department = text[index * 5 + 3];
@@ -376,7 +395,7 @@ namespace LabaN7
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Строка " + (index * 5 + 4) + " должна иметь вид числа." + " Error: " + ex.Message); //Ошибка конвертации
+                Console.WriteLine(" Строка " + (index * 5 + 4) + " должна иметь вид числа." + " Error: " + ex.Message); //Ошибка конвертации
             }
             
             
@@ -458,7 +477,43 @@ namespace LabaN7
             GC.Collect();
 
         }
-        private void EditMenu(uint index){
+        private void DeleteIndex(uint index)
+        {
+            Subject[] sb = new Subject[subjects.Length - 1];
+            for(int i = 0; i < index; i++)
+            {
+                sb[i] = subjects[i];
+            }
+            for(uint i = index+1; i < subjects.Length; i++)
+            {
+                sb[i-1] = subjects[i];
+            }
+            subjects = null;
+            GC.Collect();
+            subjects = new Subject[sb.Length];
+            for(int i = 0; i < sb.Length; i++)
+            {
+                subjects[i] = sb[i];
+            }
+            sb = null;
+            GC.Collect();
+        }
+        private void SaveFile(string path)
+        {
+            using (StreamWriter str = new StreamWriter(path, false))
+            {
+                for (int i = 0; i < subjects.Length; i++)
+                {
+                    str.WriteLine(subjects[i].Name);
+                    str.WriteLine(subjects[i].Year.ToString());
+                    str.WriteLine(subjects[i].Faculty);
+                    str.WriteLine(subjects[i].Department);
+                    str.WriteLine(subjects[i].Hours.ToString());
+                }
+            }
+        }
+        private void EditMenu(uint index)
+        {
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("\tРедактирование\n");
             Console.ResetColor();
@@ -489,17 +544,18 @@ namespace LabaN7
             Console.ResetColor();
             Console.Write("Выйти\n\n");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("Действие: ");
+            Console.Write(" Действие: ");
             Console.ResetColor();
             try
             {
                 byte selectededit = Convert.ToByte(Console.ReadLine());
                 switch (selectededit)
                 {
-                    case 1: {
+                    case 1:
+                        {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("Введите новое имя: ");
+                            Console.Write(" Введите новое имя: ");
                             Console.ResetColor();
                             subjects[index].Name = Console.ReadLine();
                             Console.Clear();
@@ -512,17 +568,18 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write("Введите новый год: ");
+                                Console.Write(" Введите новый год: ");
                                 Console.ResetColor();
                                 subjects[index].Year = Convert.ToUInt16(Console.ReadLine());
                                 Console.Clear();
                                 EditMenu(index);
                                 break;
                             }
-                            catch{
+                            catch
+                            {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\nГод ввёден в неправильном формате\n");
+                                Console.WriteLine("\n Год ввёден в неправильном формате\n");
                                 Console.ResetColor();
                                 EditMenu(index);
                                 break;
@@ -533,7 +590,7 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("Введите новый факультет: ");
+                            Console.Write(" Введите новый факультет: ");
                             Console.ResetColor();
                             subjects[index].Faculty = Console.ReadLine();
                             Console.Clear();
@@ -544,7 +601,7 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("Введите новую кафедру: ");
+                            Console.Write(" Введите новую кафедру: ");
                             Console.ResetColor();
                             subjects[index].Department = Console.ReadLine();
                             Console.Clear();
@@ -557,7 +614,7 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write("Введите новое кол-во часов: ");
+                                Console.Write(" Введите новое кол-во часов: ");
                                 Console.ResetColor();
                                 subjects[index].Hours = Convert.ToUInt16(Console.ReadLine());
                                 Console.Clear();
@@ -568,7 +625,7 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\nКол-во часов введено в неправильном формате\n");
+                                Console.WriteLine("\n Кол-во часов введено в неправильном формате\n");
                                 Console.ResetColor();
                                 EditMenu(index);
                                 break;
@@ -586,15 +643,93 @@ namespace LabaN7
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("\nВведите пункт 1-6\n");
+                Console.WriteLine("\n Введите пункт 1-6\n");
                 Console.ResetColor();
                 Menu_Edit();
             }
         }
+        private void Menu_File()
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("\t\tЗапись в файл\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("  1.");
+            Console.ResetColor();
+            Console.Write("В исходный файл \t");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("2.");
+            Console.ResetColor();
+            Console.Write("В новый файл\t");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("  3.");
+            Console.ResetColor();
+            Console.WriteLine("Обратно в меню\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(" Действие: ");
+            Console.ResetColor();
+            try
+            {
+                char select = Convert.ToChar(Console.ReadLine());
+                switch (select)
+                {
+                    case '1':
+                        {
+
+                            SaveFile(path);
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.Write(" Успешно!");
+                            Console.ResetColor();
+                            Menu_();
+                            break;
+                        }
+                    case '2':
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("\n Введите адресс файла (Если файла не существует, создается новый): ");
+                            Console.ResetColor();
+                            string destination = Console.ReadLine();
+                            SaveFile(destination);
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.Write(" Успешно!");
+                            Console.ResetColor();
+                            Menu_();
+                            break;
+                        }
+                    case '3':
+                        {
+                            Console.Clear();
+                            Menu_();
+                            break;
+                        }
+                    default:
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("\n Ошибка. Введите пункт 1-3.");
+                            Console.ResetColor();
+                            Menu_File();
+                            break;
+                        }
+                }
+            }
+            catch
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("\n Ошибка. Введите пункт 1-3.");
+                Console.ResetColor();
+                Menu_File();
+            }
+
+        }
         private void Menu_Edit()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.Write("\nВведите предмет для редактирования(0-" + (subjects.Length - 1)+"): ");
+            Console.Write("\n Введите предмет для редактирования(0-" + (subjects.Length - 1)+"): ");
             Console.ResetColor();
             try
             {
@@ -606,19 +741,17 @@ namespace LabaN7
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("\nВведите номер элемента от 0 до "+(subjects.Length-1));
+                Console.WriteLine("\n Введите номер элемента от 0 до "+(subjects.Length-1));
                 Console.ResetColor();
                 Menu_();
             }
-
-
         }
         private void Menu_Creation()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("Введите полный путь до файла : ");
+            Console.Write(" Введите полный путь до файла : ");
             Console.ResetColor();
-            string path = Console.ReadLine();
+            path = Console.ReadLine();
             Console.WriteLine();
             CreateAndFill(path);
             Console.Clear();
@@ -629,21 +762,21 @@ namespace LabaN7
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("\t Вывод на экран\n");
             Console.ResetColor();
-            Console.WriteLine("Вывести всё или отдельный предмет?\n");
+            Console.WriteLine("  Вывести всё или отдельный предмет?\n");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("\t1.");
+            Console.Write("  1.");
             Console.ResetColor();
-            Console.Write("Всё\t");
+            Console.Write("Всё\t\t");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("2.");
             Console.ResetColor();
             Console.Write("Один");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("\t3.");
+            Console.Write("\t\t3.");
             Console.ResetColor();
             Console.WriteLine("Обратно в меню\n");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("Действие: ");
+            Console.Write(" Действие: ");
             Console.ResetColor();
             try
             {
@@ -656,7 +789,7 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("\nВведите номер предмета, от 0 до " + (subjects.Length - 1)+": ");
+                            Console.Write("\n Введите номер предмета, от 0 до " + (subjects.Length - 1)+": ");
                             Console.ResetColor();
                             try
                             {
@@ -671,7 +804,7 @@ namespace LabaN7
                                 {
                                     Console.Clear();
                                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                                    Console.WriteLine("\nВы вышли за границы.\n");
+                                    Console.WriteLine("\n Вы вышли за границы.\n");
                                     Console.ResetColor();
                                     Menu_Show();
                                 }
@@ -681,7 +814,7 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\nВыберите 1, 2 или 3 пункт.\n");
+                                Console.WriteLine("\n Выберите 1, 2 или 3 пункт.\n");
                                 Console.ResetColor();
                                 Menu_Show();
                             }
@@ -696,7 +829,7 @@ namespace LabaN7
                     default:
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("\nВыберите 1, 2 или 3 пункт.\n");
+                        Console.WriteLine("\n Выберите 1, 2 или 3 пункт.\n");
                         Console.ResetColor();
                         Menu_Show();
                         break;
@@ -706,7 +839,7 @@ namespace LabaN7
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("\nВыберите 1, 2 или 3 пункт.\n");
+                Console.WriteLine("\n Выберите 1, 2 или 3 пункт.\n");
                 Console.ResetColor();
                 Menu_Show();
             }
@@ -742,7 +875,7 @@ namespace LabaN7
             Console.ResetColor();
             Console.WriteLine("Обратно в меню.\n");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("Действие: ");
+            Console.Write(" Действие: ");
             Console.ResetColor();
             try
             {
@@ -753,7 +886,7 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("\nВведите имя : ");
+                            Console.Write("\n Введите имя : ");
                             Console.ResetColor();
                             string name = Console.ReadLine();
                             Console.Clear();
@@ -767,7 +900,7 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write("\nВведите год : ");
+                                Console.Write("\n Введите год : ");
                                 Console.ResetColor();
                                 string name = Console.ReadLine();
                                 Console.Clear();
@@ -778,7 +911,7 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\nГод ввёден в неправильном формате.");
+                                Console.WriteLine("\n Год ввёден в неправильном формате.");
                                 Console.ResetColor();
                                 Menu_Searching();
                             }
@@ -788,7 +921,7 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("\nВведите факультет :");
+                            Console.Write("\n Введите факультет :");
                             Console.ResetColor();
                             string name = Console.ReadLine();
                             Console.Clear();
@@ -800,7 +933,7 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("\nВведите специальность :");
+                            Console.Write("\n Введите специальность :");
                             Console.ResetColor();
                             string name = Console.ReadLine();
                             Console.Clear();
@@ -814,7 +947,7 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write("\nВведите кол-во часов :");
+                                Console.Write("\n Введите кол-во часов :");
                                 Console.ResetColor();
                                 string name = Console.ReadLine();
                                 Console.Clear();
@@ -825,7 +958,7 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\nЧасы введены в неправильном формате.");
+                                Console.WriteLine("\n Часы введены в неправильном формате.");
                                 Console.ResetColor();
                                 Menu_Searching();
                             }
@@ -842,7 +975,7 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine("\nВведите пункт 1-6");
+                            Console.WriteLine("\n Введите пункт 1-6");
                             Console.ResetColor();
                             Menu_Searching();
                             break;
@@ -854,7 +987,7 @@ namespace LabaN7
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("\nВведите пункт 1-6");
+                Console.WriteLine("\n Введите пункт 1-6");
                 Console.ResetColor();
                 Menu_Searching();
             }
@@ -889,7 +1022,7 @@ namespace LabaN7
             Console.ResetColor();
             Console.WriteLine("Обратно в меню.\n");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("Действие: ");
+            Console.Write(" Действие: ");
             Console.ResetColor();
             try
             {
@@ -915,7 +1048,7 @@ namespace LabaN7
                             Console.ResetColor();
                             Console.WriteLine("Отмена\n");
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("Действие: ");
+                            Console.Write(" Действие: ");
                             Console.ResetColor();
                             try
                             {
@@ -926,8 +1059,8 @@ namespace LabaN7
                                         {
                                             Console.Clear();
                                             Sort_By_Name(true);
-                                            Console.ForegroundColor = ConsoleColor.Green;
-                                            Console.WriteLine("\n Отсортировано по возрастанию.\n");
+                                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                            Console.Write(" Успешно!");
                                             Console.ResetColor();
                                             Menu_();
                                             break;
@@ -936,8 +1069,8 @@ namespace LabaN7
                                         {
                                             Console.Clear();
                                             Sort_By_Name(false);
-                                            Console.ForegroundColor = ConsoleColor.Green;
-                                            Console.WriteLine("\n Отсортировано по убыванию.\n");
+                                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                            Console.Write(" Успешно!");
                                             Console.ResetColor();
                                             Menu_();
                                             break;
@@ -952,25 +1085,21 @@ namespace LabaN7
                                         {
                                             Console.Clear();
                                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                                            Console.WriteLine("\nВыберите пункт 1-3 \n");
+                                            Console.WriteLine("\n Выберите пункт 1-3 \n");
                                             Console.ResetColor();
                                             Menu_Sort();
                                             break;
                                         }
                                 }
-
-
-
                             }
                             catch
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\nВыберите пункт 1-3 \n");
+                                Console.WriteLine("\n Выберите пункт 1-3 \n");
                                 Console.ResetColor();
                                 Menu_Sort();
                                 break;
-
                             }
                             break;
                         }
@@ -993,7 +1122,7 @@ namespace LabaN7
                             Console.ResetColor();
                             Console.WriteLine("Отмена\n");
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("Действие: ");
+                            Console.Write(" Действие: ");
                             Console.ResetColor();
                             try
                             {
@@ -1004,8 +1133,8 @@ namespace LabaN7
                                         {
                                             Console.Clear();
                                             Sort_By_Year(true);
-                                            Console.ForegroundColor = ConsoleColor.Green;
-                                            Console.WriteLine("\n Отсортировано по возрастанию.\n");
+                                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                            Console.Write(" Успешно!");
                                             Console.ResetColor();
                                             Menu_();
                                             break;
@@ -1014,8 +1143,8 @@ namespace LabaN7
                                         {
                                             Console.Clear();
                                             Sort_By_Year(false);
-                                            Console.ForegroundColor = ConsoleColor.Green;
-                                            Console.WriteLine("\n Отсортировано по убыванию.\n");
+                                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                            Console.Write(" Успешно!");
                                             Console.ResetColor();
                                             Menu_();
                                             break;
@@ -1030,19 +1159,18 @@ namespace LabaN7
                                         {
                                             Console.Clear();
                                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                                            Console.WriteLine("\nВыберите пункт 1-3 \n");
+                                            Console.WriteLine("\n Выберите пункт 1-3 \n");
                                             Console.ResetColor();
                                             Menu_Sort();
                                             break;
                                         }
                                 }
-
                             }
                             catch
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\nВыберите пункт 1-3 \n");
+                                Console.WriteLine("\n Выберите пункт 1-3 \n");
                                 Console.ResetColor();
                                 Menu_Sort();
                                 break;
@@ -1069,7 +1197,7 @@ namespace LabaN7
                                 Console.ResetColor();
                                 Console.WriteLine("Отмена\n");
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write("Действие: ");
+                                Console.Write(" Действие: ");
                                 Console.ResetColor();
                                 try
                                 {
@@ -1080,8 +1208,8 @@ namespace LabaN7
                                             {
                                                 Console.Clear();
                                                 Sort_By_Faculty(true);
-                                                Console.ForegroundColor = ConsoleColor.Green;
-                                                Console.WriteLine("\n Отсортировано по возрастанию.\n");
+                                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                                Console.Write(" Успешно!");
                                                 Console.ResetColor();
                                                 Menu_();
                                                 break;
@@ -1090,8 +1218,8 @@ namespace LabaN7
                                             {
                                                 Console.Clear();
                                                 Sort_By_Faculty(false);
-                                                Console.ForegroundColor = ConsoleColor.Green;
-                                                Console.WriteLine("\n Отсортировано по убыванию.\n");
+                                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                                Console.Write(" Успешно!");
                                                 Console.ResetColor();
                                                 Menu_();
                                                 break;
@@ -1106,19 +1234,18 @@ namespace LabaN7
                                             {
                                                 Console.Clear();
                                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                                Console.WriteLine("\nВыберите пункт 1-3 \n");
+                                                Console.WriteLine("\n Выберите пункт 1-3 \n");
                                                 Console.ResetColor();
                                                 Menu_Sort();
                                                 break;
                                             }
                                     }
-
                                 }
                                 catch
                                 {
                                     Console.Clear();
                                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                                    Console.WriteLine("\nВыберите пункт 1-3 \n");
+                                    Console.WriteLine("\n Выберите пункт 1-3 \n");
                                     Console.ResetColor();
                                     Menu_Sort();
                                     break;
@@ -1145,7 +1272,7 @@ namespace LabaN7
                             Console.ResetColor();
                             Console.WriteLine("Отмена\n");
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("Действие: ");
+                            Console.Write(" Действие: ");
                             Console.ResetColor();
                             try
                             {
@@ -1156,8 +1283,8 @@ namespace LabaN7
                                         {
                                             Console.Clear();
                                             Sort_By_Department(true);
-                                            Console.ForegroundColor = ConsoleColor.Green;
-                                            Console.WriteLine("\n Отсортировано по возрастанию.\n");
+                                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                            Console.Write(" Успешно!");
                                             Console.ResetColor();
                                             Menu_();
                                             break;
@@ -1166,8 +1293,8 @@ namespace LabaN7
                                         {
                                             Console.Clear();
                                             Sort_By_Department(false);
-                                            Console.ForegroundColor = ConsoleColor.Green;
-                                            Console.WriteLine("\n Отсортировано по убыванию.\n");
+                                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                            Console.Write(" Успешно!");
                                             Console.ResetColor();
                                             Menu_();
                                             break;
@@ -1182,21 +1309,18 @@ namespace LabaN7
                                         {
                                             Console.Clear();
                                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                                            Console.WriteLine("\nВыберите пункт 1-3 \n");
+                                            Console.WriteLine("\n Выберите пункт 1-3 \n");
                                             Console.ResetColor();
                                             Menu_Sort();
                                             break;
                                         }
                                 }
-
-
-
                             }
                             catch
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\nВыберите пункт 1-3 \n");
+                                Console.WriteLine("\n Выберите пункт 1-3 \n");
                                 Console.ResetColor();
                                 Menu_Sort();
                                 break;
@@ -1234,8 +1358,8 @@ namespace LabaN7
                                         {
                                             Console.Clear();
                                             Sort_By_Hours(true);
-                                            Console.ForegroundColor = ConsoleColor.Green;
-                                            Console.WriteLine("\n Отсортировано по возрастанию.\n");
+                                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                            Console.Write(" Успешно!");
                                             Console.ResetColor();
                                             Menu_();
                                             break;
@@ -1244,8 +1368,8 @@ namespace LabaN7
                                         {
                                             Console.Clear();
                                             Sort_By_Hours(false);
-                                            Console.ForegroundColor = ConsoleColor.Green;
-                                            Console.WriteLine("\n Отсортировано по убыванию.\n");
+                                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                            Console.Write(" Успешно!");
                                             Console.ResetColor();
                                             Menu_();
                                             break;
@@ -1260,7 +1384,7 @@ namespace LabaN7
                                         {
                                             Console.Clear();
                                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                                            Console.WriteLine("\nВыберите пункт 1-3 \n");
+                                            Console.WriteLine("\n Выберите пункт 1-3 \n");
                                             Console.ResetColor();
                                             Menu_Sort();
                                             break;
@@ -1272,7 +1396,7 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\nВыберите пункт 1-3 \n");
+                                Console.WriteLine("\n Выберите пункт 1-3 \n");
                                 Console.ResetColor();
                                 Menu_Sort();
                                 break;
@@ -1289,7 +1413,7 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine("\nВведите пункт 1-6");
+                            Console.WriteLine("\n Введите пункт 1-6");
                             Console.ResetColor();
                             Menu_Sort();
                             break;
@@ -1300,11 +1424,10 @@ namespace LabaN7
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("\nВыберите пункт 1-6");
+                Console.WriteLine("\n Выберите пункт 1-6");
                 Console.ResetColor();
                 Menu_Sort();
             }
-
         }
         private void Menu_Add()
         {
@@ -1334,7 +1457,7 @@ namespace LabaN7
             Console.ResetColor();
             Console.WriteLine("Обратно в меню.\n");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("Действие: ");
+            Console.Write(" Действие: ");
             Console.ResetColor();
             try
             {
@@ -1345,7 +1468,7 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("\nВведите имя : ");
+                            Console.Write("\n Введите имя : ");
                             Console.ResetColor();
                             name = Console.ReadLine();
                             Console.Clear();
@@ -1353,7 +1476,7 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write("\nВведите год : ");
+                                Console.Write("\n Введите год : ");
                                 Console.ResetColor();
                                 year = Convert.ToUInt16(Console.ReadLine());
                                 Console.Clear();
@@ -1363,18 +1486,18 @@ namespace LabaN7
 
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\nГод ввёден в неправильном формате.");
+                                Console.WriteLine("\n Год ввёден в неправильном формате.");
                                 Console.ResetColor();
                                 Menu_Add();
                             }
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("\nВведите факультет: ");
+                            Console.Write("\n Введите факультет: ");
                             Console.ResetColor();
                             faculty = Console.ReadLine();
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("\nВведите кафедру : ");
+                            Console.Write("\n Введите кафедру : ");
                             Console.ResetColor();
                             department = Console.ReadLine();
                             Console.Clear();
@@ -1382,7 +1505,7 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write("\nВведите часы : ");
+                                Console.Write("\n Введите часы : ");
                                 Console.ResetColor();
                                 hours = Convert.ToUInt16(Console.ReadLine());
                                 Console.Clear();
@@ -1392,12 +1515,15 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\nЧасы введены в неправильном формате.");
+                                Console.WriteLine("\n Часы введены в неправильном формате.");
                                 Console.ResetColor();
                                 Menu_Add();
                             }
                             AddFirst(name, year, faculty, department, hours);
                             Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.Write(" Успешно!");
+                            Console.ResetColor();
                             Menu_Add();
                             break;
                         }
@@ -1405,7 +1531,7 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("\nВведите имя : ");
+                            Console.Write("\n Введите имя : ");
                             Console.ResetColor();
                             name = Console.ReadLine();
                             Console.Clear();
@@ -1413,7 +1539,7 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write("\nВведите год : ");
+                                Console.Write("\n Введите год : ");
                                 Console.ResetColor();
                                 year = Convert.ToUInt16(Console.ReadLine());
                                 Console.Clear();
@@ -1423,18 +1549,18 @@ namespace LabaN7
 
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\nГод ввёден в неправильном формате.");
+                                Console.WriteLine("\n Год ввёден в неправильном формате.");
                                 Console.ResetColor();
                                 Menu_Add();
                             }
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("\nВведите факультет: ");
+                            Console.Write("\n Введите факультет: ");
                             Console.ResetColor();
                             faculty = Console.ReadLine();
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("\nВведите кафедру : ");
+                            Console.Write("\n Введите кафедру : ");
                             Console.ResetColor();
                             department = Console.ReadLine();
                             Console.Clear();
@@ -1442,7 +1568,7 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write("\nВведите часы : ");
+                                Console.Write("\n Введите часы : ");
                                 Console.ResetColor();
                                 hours = Convert.ToUInt16(Console.ReadLine());
                                 Console.Clear();
@@ -1452,12 +1578,15 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\nЧасы введены в неправильном формате.");
+                                Console.WriteLine("\n Часы введены в неправильном формате.");
                                 Console.ResetColor();
                                 Menu_Add();
                             }
                             AddLast(name, year, faculty, department, hours);
                             Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.Write(" Успешно!");
+                            Console.ResetColor();
                             Menu_Add();
                             break;
                         }
@@ -1467,14 +1596,14 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write("\nВведите новый номер предмета (0 - начало, "+subjects.Length+" - конец): ");
+                                Console.Write("\n Введите новый номер предмета (0 - начало, "+subjects.Length+" - конец): ");
                                 Console.ResetColor();
                                 index = Convert.ToUInt32(Console.ReadLine());
                                 if (!(index >= 0 && index <= subjects.Length))
                                 {
                                     Console.Clear();
                                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                                    Console.WriteLine("\nНельзя выходить за рамки массива.");
+                                    Console.WriteLine("\n Нельзя выходить за рамки массива.");
                                     Console.ResetColor();
                                     Menu_Add();
                                 }
@@ -1483,13 +1612,13 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\nНомер ввёден в неправильном формате.");
+                                Console.WriteLine("\n Номер ввёден в неправильном формате.");
                                 Console.ResetColor();
                                 Menu_Add();
                             }
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("\nВведите имя : ");
+                            Console.Write("\n Введите имя : ");
                             Console.ResetColor();
                             name = Console.ReadLine();
                             Console.Clear();
@@ -1497,7 +1626,7 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write("\nВведите год : ");
+                                Console.Write("\n Введите год : ");
                                 Console.ResetColor();
                                 year = Convert.ToUInt16(Console.ReadLine());
                                 Console.Clear();
@@ -1507,18 +1636,18 @@ namespace LabaN7
 
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\nГод ввёден в неправильном формате.");
+                                Console.WriteLine("\n Год ввёден в неправильном формате.");
                                 Console.ResetColor();
                                 Menu_Add();
                             }
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("\nВведите факультет: ");
+                            Console.Write("\n Введите факультет: ");
                             Console.ResetColor();
                             faculty = Console.ReadLine();
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("\nВведите кафедру : ");
+                            Console.Write("\n Введите кафедру : ");
                             Console.ResetColor();
                             department = Console.ReadLine();
                             Console.Clear();
@@ -1526,7 +1655,7 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write("\nВведите часы : ");
+                                Console.Write("\n Введите часы : ");
                                 Console.ResetColor();
                                 hours = Convert.ToUInt16(Console.ReadLine());
                                 Console.Clear();
@@ -1536,12 +1665,15 @@ namespace LabaN7
                             {
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("\nЧасы введены в неправильном формате.");
+                                Console.WriteLine("\n Часы введены в неправильном формате.");
                                 Console.ResetColor();
                                 Menu_Add();
                             }
                             AddIndex(index,name, year, faculty, department, hours);
                             Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.Write(" Успешно!");
+                            Console.ResetColor();
                             Menu_Add();
                             break;
                         }
@@ -1555,23 +1687,98 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine("\nВведите пункт 1-4");
+                            Console.WriteLine("\n Введите пункт 1-4");
                             Console.ResetColor();
                             Menu_Add();
                             break;
                         }
                 }
     }
-            catch(Exception ex)
+            catch
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("\nВведите пункт 1-4"+ex.Message);
+                Console.WriteLine("\n Введите пункт 1-4");
                 Console.ResetColor();
                 Menu_Add();
             }
         }
-        private protected void Menu_()         //Меню для взаимодействия.
+        private void Menu_Delete()
+        {
+            uint index;
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("\tУдаление элемента\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("  1.");
+            Console.ResetColor();
+            Console.Write("Ввести номер\t\t");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("2.");
+            Console.ResetColor();
+            Console.WriteLine("Обратно в меню\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(" Действие: ");
+            Console.ResetColor();
+            try
+            {
+                char select = Convert.ToChar(Console.ReadLine());
+                switch (select)
+                {
+                    case '1':
+                        {
+                            try
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write("\n Введите предмет для удаления(0-" + (subjects.Length - 1) + "): ");
+                                Console.ResetColor();
+                                index = Convert.ToUInt16(Console.ReadLine());
+                                Console.Clear();
+                                DeleteIndex(index);
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                Console.Write(" Успешно!");
+                                Console.ResetColor();
+                                Menu_();
+                            }
+                            catch
+                            {
+
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine("\n Номер ввёден в неправильном формате, либо вы хотите удалить несуществующий предмет.");
+                                Console.ResetColor();
+                                Menu_Delete();
+                            }
+                            break;
+                        }
+                    case '2':
+                        {
+                            Console.Clear();
+                            Menu_();
+                            break;
+                        }
+                    default:
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("\n Ошибка. Введите пункт 1-2.");
+                            Console.ResetColor();
+                            Menu_Delete();
+                            break;
+                        }
+                }
+            }
+            catch
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("\n Ошибка. Введите пункт 1-2.");
+                Console.ResetColor();
+                Menu_Delete();
+            }
+        }
+        public void Menu_()         //Меню для взаимодействия.
         {
             byte select = new byte();
             Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -1585,7 +1792,7 @@ namespace LabaN7
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.Write("Массив создан ("+subjects.Length+" эл.)\t");
                 Console.ResetColor();
             }
@@ -1627,7 +1834,7 @@ namespace LabaN7
             Console.WriteLine("Выход");
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("Действие: ");
+            Console.Write(" Действие: ");
             Console.ResetColor();
             try
             {
@@ -1637,7 +1844,7 @@ namespace LabaN7
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("\nВыберите пункт 1-10 \n"); Menu_();
+                Console.WriteLine("\n Выберите пункт 1-10 \n"); Menu_();
                 Console.ResetColor();
             }
             switch (select)
@@ -1653,7 +1860,7 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine("\nМассив уже создан. Освободите память для загрузки нового.\n");
+                            Console.WriteLine("\n Массив уже создан. Освободите память для загрузки нового.\n");
                             Console.ResetColor();
                             Menu_();
                             break;
@@ -1669,7 +1876,7 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine("\nМассив предметов не был создан\n");
+                            Console.WriteLine("\n Массив предметов не был создан\n");
                             Console.ResetColor();
                             Menu_();
                         }
@@ -1684,7 +1891,7 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine("\nМассив предметов не был создан\n");
+                            Console.WriteLine("\n Массив предметов не был создан\n");
                             Console.ResetColor();
                             Menu_();
                         }
@@ -1700,14 +1907,13 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine("\nМассив предметов не был создан\n");
+                            Console.WriteLine("\n Массив предметов не был создан\n");
                             Console.ResetColor();
                             Menu_();
                         }
                         break;
                     }
-                case 5:
-                    {
+                case 5: {
                         if (created)
                         {
                             Console.Clear();
@@ -1717,14 +1923,13 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine("\nМассив предметов не был создан\n");
+                            Console.WriteLine("\n Массив предметов не был создан\n");
                             Console.ResetColor();
                             Menu_();
                         }
                         break;
                     }
-               case 6:
-                    {
+                case 6: {
                         if (created)
                         {
                             Console.Clear();
@@ -1734,24 +1939,74 @@ namespace LabaN7
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine("\nМассив предметов не был создан\n");
+                            Console.WriteLine("\n Массив предметов не был создан\n");
                             Console.ResetColor();
                             Menu_();
                         }
                         break;
                     }
-                             
-                case 9:
-                    {
-                        Console.Clear();
-                        subjects = null;
-                        created = false; GC.Collect(); Menu_(); break;
+                case 7: {
+                        if (created)
+                        {
+                            Console.Clear();
+                            Menu_Delete();
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("\n Массив предметов не был создан\n");
+                            Console.ResetColor();
+                            Menu_();
+                        }
+                        break;
                     }
-                default:
-                    {
+                case 8: {
+                        if (created)
+                        {
+                            Console.Clear();
+                            Menu_File();
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("\n Массив предметов не был создан\n");
+                            Console.ResetColor();
+                            Menu_();
+                        }
+                        break;
+
+                    }
+                case 9: {
+                        if (created)
+                        {
+                            Console.Clear();
+                            subjects = null;
+                            created = false; GC.Collect();
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.Write(" Успешно!");
+                            Console.ResetColor();
+                            Menu_(); break;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("\n Массив предметов не был создан\n");
+                            Console.ResetColor();
+                            Menu_();
+                        }
+                        break;
+                    }
+                case 10:{
+                        Environment.Exit(0);
+                        break;
+                    }
+                default:{
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("\nВыберите пункт 1-10 \n");
+                        Console.WriteLine("\n Выберите пункт 1-10 \n");
                         Console.ResetColor();
                         Menu_();
                         break;
